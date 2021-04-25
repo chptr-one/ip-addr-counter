@@ -27,7 +27,7 @@ public class IpStringCounter {
                 linesProcessed++;
                 bitVector.setBit(hashFunction.applyAsLong(ipString));
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         uniqueIp = bitVector.getCardinality();

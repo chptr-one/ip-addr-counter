@@ -2,7 +2,6 @@ package chptr.one.ip_counter;
 
 import me.tongfei.progressbar.ProgressBar;
 import me.tongfei.progressbar.ProgressBarBuilder;
-import me.tongfei.progressbar.ProgressBarStyle;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
