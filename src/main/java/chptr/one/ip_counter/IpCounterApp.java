@@ -28,12 +28,8 @@ public class IpCounterApp {
 
             IpStringCounter counter = new IpStringCounter(reader);
             counter.processFile();
-            double totalTime = (System.nanoTime() - startTime) / 1_000_000_000.0; // in seconds
-            System.out.printf("Unique IP addresses : %,d\n", counter.getUniqueIp());
-            System.out.printf("Lines processed     : %,d lines\n", counter.getLinesProcessed());
-            System.out.printf("Total time          : %.3f sec\n", totalTime);
-            System.out.printf("Processing speed    : %.2f KLines/sec\n", counter.getLinesProcessed() / 1000 / totalTime);
-            System.out.printf("Average disk speed  : %.2f MB/sec\n", Files.size(path) / 1024 / 1024 / totalTime);
+            long totalTime = (System.nanoTime() - startTime);
+            IpCounterAppUtils.printResults(counter, Files.size(path), totalTime);
         } catch (IOException e) {
             e.printStackTrace();
         }

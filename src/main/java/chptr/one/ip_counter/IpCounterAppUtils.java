@@ -20,4 +20,13 @@ public class IpCounterAppUtils {
 
         return filePath;
     }
+
+    public static void printResults(IpStringCounter counter, long fileSize, long totalTime) {
+        double timeInSeconds = totalTime / 1_000_000_000.0;
+        System.out.printf("Unique IP addresses : %,d\n", counter.getUniqueIp());
+        System.out.printf("Lines processed     : %,d lines\n", counter.getLinesProcessed());
+        System.out.printf("Total time          : %.3f sec\n", timeInSeconds);
+        System.out.printf("Processing speed    : %.2f KLines/sec\n", counter.getLinesProcessed() / 1000 / timeInSeconds);
+        System.out.printf("Average disk speed  : %.2f MB/sec\n", fileSize / 1024 / 1024 / timeInSeconds);
+    }
 }
