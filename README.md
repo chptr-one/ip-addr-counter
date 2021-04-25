@@ -23,7 +23,7 @@ that your implementation is better than this simple, naive algorithm.
 https://ecwid-vgv-storage.s3.eu-central-1.amazonaws.com/ip_addresses.zip
 
 WARNING! This file is about 20 GB, and is unpacking approximately 120 GB. 
-It consists of 8 billions lines with 1 billion unique line.
+It consists of 8 billions lines with 1 billion unique lines.
 
 ## Dependencies
 * Maven
