@@ -17,7 +17,7 @@ public class IpStringCounter {
     public void processFile()  {
         uniqueIp = 0;
         linesProcessed = 0;
-        BitVector bitVector = new ArrayBitVector(1L << 32);
+        ArrayBitVector bitVector = new ArrayBitVector(1L << 32);
         IpStringHashFunction hashFunction = new IpStringHashFunction();
         String ipString;
 
@@ -31,7 +31,6 @@ public class IpStringCounter {
             }
         }
         uniqueIp = bitVector.getCardinality();
-
     }
 
     public long getUniqueIp() {

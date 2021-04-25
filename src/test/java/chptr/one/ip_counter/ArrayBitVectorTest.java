@@ -42,42 +42,42 @@ class ArrayBitVectorTest {
                 MAX_CAPACITY, MAX_CAPACITY);
 
         for (var testCase : testCases.entrySet()) {
-            BitVector bitVector = new ArrayBitVector(testCase.getKey());
+            ArrayBitVector bitVector = new ArrayBitVector(testCase.getKey());
             assertEquals(testCase.getValue(), bitVector.getCapacity());
         }
     }
 
     @Test
     void expectException_bitIndexLessThenZero() {
-        BitVector bitVector = new ArrayBitVector(MIN_CAPACITY);
+        ArrayBitVector bitVector = new ArrayBitVector(MIN_CAPACITY);
         assertThrows(IllegalArgumentException.class,
                 () -> bitVector.setBit(-1));
     }
 
     @Test
     void expectException_bitIndexExceededBitCapacity() {
-        BitVector bitVector = new ArrayBitVector(MAX_CAPACITY);
+        ArrayBitVector bitVector = new ArrayBitVector(MAX_CAPACITY);
         assertThrows(IllegalArgumentException.class,
                 () -> bitVector.setBit(MAX_CAPACITY));
     }
 
     @Test
     void setZeroBit() {
-        BitVector bitVector = new ArrayBitVector(1L);
+        ArrayBitVector bitVector = new ArrayBitVector(1L);
         bitVector.setBit(0);
         assertTrue(bitVector.getBit(0));
     }
 
     @Test
     void setLastBit() {
-        BitVector bitVector = new ArrayBitVector(MAX_CAPACITY);
+        ArrayBitVector bitVector = new ArrayBitVector(MAX_CAPACITY);
         bitVector.setBit(MAX_CAPACITY - 1);
         assertTrue(bitVector.getBit(MAX_CAPACITY - 1));
     }
 
     @Test
     void cardinalityReturnsRightValue() {
-        BitVector bitVector = new ArrayBitVector(1L);
+        ArrayBitVector bitVector = new ArrayBitVector(1L);
         assertEquals(0L, bitVector.getCardinality());
         bitVector.setBit(0L);
         assertEquals(1L, bitVector.getCardinality());
