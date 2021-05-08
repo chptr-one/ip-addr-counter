@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class IpCounterApp {
 
-    private static void doTheWork(String fileName) {
+    private static void processFile(String fileName) {
         ProgressBarBuilder pbb = new ProgressBarBuilder()
                 .setTaskName("Processing " + Path.of(fileName).getFileName())
                 .setUnit("MB", 1048576); // setting the progress bar to use MB as the unit
@@ -24,14 +24,17 @@ public class IpCounterApp {
             IpStringCounter counter = new IpStringCounter(reader);
             counter.processFile();
             long totalTime = (System.nanoTime() - startTime);
-            IpCounterAppUtils.printResults(counter, Files.size(Path.of(fileName)), totalTime);
+            IpCounterAppUtils.printResults(counter.getUniqueIp(),
+                    counter.getLinesProcessed(),
+                    Files.size(Path.of(fileName)),
+                    totalTime);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        Optional<String> optionalFileName = IpCounterAppUtils.checkArgsAndGetFileName(args);
-        optionalFileName.ifPresent(IpCounterApp::doTheWork);
+        Optional<String> optionalFileName = IpCounterAppUtils.parseAndCheckFileName(args);
+        optionalFileName.ifPresent(IpCounterApp::processFile);
     }
 }
