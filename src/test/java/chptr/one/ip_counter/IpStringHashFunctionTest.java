@@ -22,6 +22,11 @@ class IpStringHashFunctionTest {
     }
 
     @Test
+    void throwsRuntimeExceptionOnInvalidAddress() {
+        assertThrows(RuntimeException.class, () -> hashFunction.applyAsLong("0.0.0.256"));
+    }
+
+    @Test
     void cornerCases() {
         for (var testCase : cornerCases.entrySet()) {
             long actual = hashFunction.applyAsLong(testCase.getKey());
